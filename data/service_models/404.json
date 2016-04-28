@@ -1,0 +1,24 @@
+{
+   "service": "404",
+    "states": [
+        {
+            "id": "PASS",
+            "next": [
+                [
+                    "PASS",
+                    1
+                ]
+            ],
+            "response": {
+                "body": "file not found",
+                "headers": [
+                    [
+                        "Content-Type",
+                        "text/html"
+                    ]
+                ],
+                "status_code": 404
+            }
+        }
+    ]
+}

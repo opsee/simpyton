@@ -1,0 +1,24 @@
+{
+   "service": "200OK",
+    "states": [
+        {
+            "id": "PASS",
+            "next": [
+                [
+                    "PASS",
+                    1
+                ]
+            ],
+            "response": {
+                "body": "cool cool",
+                "headers": [
+                    [
+                        "Content-Type",
+                        "text/html"
+                    ]
+                ],
+                "status_code": 200
+            }
+        }
+    ]
+}

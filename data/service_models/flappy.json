@@ -1,0 +1,51 @@
+{
+    "service": "testflap",
+    "states": [
+        {
+            "id": "PASS",
+            "next": [
+                [
+                    "PASS",
+                    0.5
+                ],
+                [
+                    "FAIL",
+                    0.5
+                ]
+            ],
+            "response": {
+                "body": "an not error has occurred",
+                "headers": [
+                    [
+                        "Content-Type",
+                        "text/html"
+                    ]
+                ],
+                "status_code": 200
+            }
+        },
+        {
+            "id": "FAIL",
+            "next": [
+                [
+                    "PASS",
+                    0.5
+                ],
+                [
+                    "FAIL",
+                    0.5
+                ]
+            ],
+            "response": {
+                "body": "an not error has not occurred",
+                "headers": [
+                    [
+                        "Content-Type",
+                        "text/html"
+                    ]
+                ],
+                "status_code": 500
+            }
+        }
+    ]
+}

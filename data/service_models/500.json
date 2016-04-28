@@ -1,0 +1,24 @@
+{
+   "service": "500",
+    "states": [
+        {
+            "id": "PASS",
+            "next": [
+                [
+                    "PASS",
+                    1
+                ]
+            ],
+            "response": {
+                "body": "internal server error",
+                "headers": [
+                    [
+                        "Content-Type",
+                        "text/html"
+                    ]
+                ],
+                "status_code": 500
+            }
+        }
+    ]
+}
