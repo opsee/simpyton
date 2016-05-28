@@ -9,7 +9,7 @@ with open('LICENSE') as f:
 
 setup(
     name='simpyton',
-    version='0.0.1',
+    version='0.0.2',
     description='Ties HTTP service models to endpoints so you get the responses you want.',
     long_description=readme,
     author='dan compton',

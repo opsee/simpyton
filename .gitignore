@@ -1,6 +1,6 @@
 build/
-dist
-*.egg-info
+dist/
+*.egg-info/
 *.egg/
 *.pyc
 *.swp

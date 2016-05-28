@@ -10,4 +10,4 @@ build:
 	docker build --build-arg SIMPYTON_VERSION=${SIMPYTON_VERSION} -t quay.io/opsee/simpyton:${SIMPYTON_VERSION} .
 
 run:
-	docker run --env-file=./simpytonenv quay.io/opsee/simpyton:${SIMPYTON_VERSION} python simpyton/app.py
+	docker run quay.io/opsee/simpyton:${SIMPYTON_VERSION}

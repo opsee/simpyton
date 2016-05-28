@@ -1,0 +1,27 @@
+{
+   "service": "200OK",
+    "states": [
+        {
+            "id": "PASS",
+            "next": [
+                [
+                    "PASS",
+                    1
+                ]
+            ],
+            "response": {
+                "headers": [
+                    [
+                        "HTTP/1.1 301",
+                        "Moved Permanently "
+                    ],
+                    [
+                        "Location",
+                        "http://google.com/"
+                    ]
+                ],
+                "status_code": 301
+            }
+        }
+    ]
+}
