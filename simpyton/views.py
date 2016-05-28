@@ -59,7 +59,6 @@ class Services:
         """
         try:
             raw_json = req.stream.read()
-            print raw_json
             self.SERVICEMAP[service_id] = Markov(raw_json)
             resp = falcon.Response()
             resp.body = "Couldn't register"
