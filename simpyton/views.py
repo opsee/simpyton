@@ -15,16 +15,19 @@ class Services:
             initialize default services if they don't exist
         """
         self.SERVICEMAP = dict()
-        service_ext = '.json'
-        for f in os.listdir('./data/service_models'):
-            if f.endswith(service_ext):
-                with open('./data/service_models/'+f) as _file:
-                    service_id = f[:len(f)-len(service_ext)]
-                    self.SERVICEMAP[service_id] = Markov(_file.read().replace('\n',''))
-                    if len(self.SERVICEMAP[service_id].ID) > 0:
-                        print "init: registered ", service_id
-                    else:
-                        print "init: couldn't register ", service_id
+        try:
+            service_ext = '.json'
+            for f in os.listdir('./data'):
+                if f.endswith(service_ext):
+                    with open('./data/'+f) as _file:
+                        service_id = f[:len(f)-len(service_ext)]
+                        self.SERVICEMAP[service_id] = Markov(_file.read().replace('\n',''))
+                        if len(self.SERVICEMAP[service_id].ID) > 0:
+                            print "init: registered ", service_id
+                        else:
+                            print "init: couldn't register ", service_id
+        except:
+            print "Couldn't load default services"
 
     def on_get(self, req, resp, action, service_id):
         if action == 'services':

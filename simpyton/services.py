@@ -1,4 +1,5 @@
 from simpyton.util import *
+from simpyton.status_codes import *
 import falcon
 import requests
 import json
@@ -24,33 +25,7 @@ class Http(object):
 
 
     def decode_status_code(self, code):
-        """
-            returns falcon status code type from integer code
-            TODO(dan) add the ones that are missing
-        """
-        x = {
-                100:falcon.HTTP_100,
-                101:falcon.HTTP_101,
-                200:falcon.HTTP_200,
-                201:falcon.HTTP_201,
-                204:falcon.HTTP_204,
-                300:falcon.HTTP_300,
-                301:falcon.HTTP_301,
-                304:falcon.HTTP_304,
-                400:falcon.HTTP_401,
-                401:falcon.HTTP_401,
-                403:falcon.HTTP_403,
-                404:falcon.HTTP_404,
-                405:falcon.HTTP_404,
-                500:falcon.HTTP_500,
-                501:falcon.HTTP_501,
-                504:falcon.HTTP_504,
-
-            }
-
-        if code in x:
-            return x[code]
-        return falcon.HTTP_799 # end of the world (you didn't include a status code in the service model)
+        return status_codes.get(str(code), falcon.HTTP_799)
 
     def decode_as_string(self, content_type, content):
         if content_type.lower() == 'application/json':
@@ -75,6 +50,7 @@ class Http(object):
 
         status_code=falcon.HTTP_200
         if 'status_code' in response:
+            print 'getting status code'
             status_code=self.decode_status_code(response['status_code'])
         resp.status=status_code
         return resp

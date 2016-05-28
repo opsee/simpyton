@@ -1,14 +1,15 @@
-FROM python:2.7
-MAINTAINER <dan@opsee.co>
+FROM gliderlabs/alpine:3.3
+
+WORKDIR /myapp
+COPY . /myapp
+
 ARG SIMPYTON_VERSION
-ARG SIMPYTON_HOST
-ARG SIMPYTON_PORT
 ENV SIMPYTON_VERSION ${SIMPYTON_VERSION:-""}
-ENV SIMPYTON_HOST ""
-ENV SIMPYTON_PORT "8000"
 
-RUN mkdir /home/simpyton
-WORKDIR /home/simpyton
+RUN apk --update add python py-pip openssl ca-certificates
+RUN apk --update add --virtual build-dependencies python-dev build-base wget \
+  && pip install -r requirements.txt \
+  && python setup.py install \
+  && apk del build-dependencies
 
-COPY . /home/simpyton
-RUN pip install -r requirements.txt && pip install .
+CMD ["python", "simpyton"]
