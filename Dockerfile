@@ -12,4 +12,5 @@ RUN apk --update add --virtual build-dependencies python-dev build-base wget \
   && python setup.py install \
   && apk del build-dependencies
 
+EXPOSE 8000
 CMD ["python", "simpyton"]

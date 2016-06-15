@@ -1,5 +1,7 @@
 .PHONY: all build
 SIMPYTON_VERSION ?= $(shell git rev-parse HEAD)
+SIMPYTON_HOST_PORT ?= 8000
+SIMPYTON_PORT ?= 8000
 
 all: build
 
@@ -10,4 +12,4 @@ build:
 	docker build --build-arg SIMPYTON_VERSION=${SIMPYTON_VERSION} -t quay.io/opsee/simpyton:${SIMPYTON_VERSION} .
 
 run:
-	docker run quay.io/opsee/simpyton:${SIMPYTON_VERSION}
+	docker run -p ${SIMPYTON_HOST_PORT}:${SIMPYTON_PORT} quay.io/opsee/simpyton:${SIMPYTON_VERSION}
